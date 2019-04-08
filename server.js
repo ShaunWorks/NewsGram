@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
+//const mongoose = require('mongoose');
 const exphbs = require ('express-handlebars');
 const scrape = require('./scraper');
 //const routes = require('./routes');
@@ -22,8 +22,8 @@ app.use(router);
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
- MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+ //MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
-mongoose.connect(MONGODB_URI);
+//mongoose.connect(MONGODB_URI);
 scrape();
 app.listen(PORT, () => console.log("Listening on port: " + PORT));
