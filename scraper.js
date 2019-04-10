@@ -8,20 +8,26 @@ const scrape = () => {
       if (res.status === 200) {
 
         console.log("scraping");
-        const html = '<h3 class="title">I have a bunch of questions on how to behave when contributing to open source</h3>'
         const $ = cheerio.load(res.data);
-        //console.log($.html())
-        const selector = $('article')
+        const data = [];
+
         $('article').each((i,el) => {
           const item = $(el).html();
-          console.log(item)
+          const headline = $(el).find('.cd__headline-text').text().trim();
+          const link = 'https://www.cnn.com' + $(el).find('.media a').attr('href');
+          const media = $(el).find('.media a img').attr('data-src-medium').replace('//', '');
+          const article = {
+              headline: headline,
+              link: link,
+              media: media
+          } 
+          data.push(article);
         })
-        //console.log(selector.html())
-        const data = [];
+        return data;
       }
-      else console.log(':/')
+      else console.log('Page returned with a status of: ' + res.status)
     })
-    .catch(err => console.log("you goofedd"));
+    .catch(err => console.log(err));
 };
 
 module.exports = scrape;
