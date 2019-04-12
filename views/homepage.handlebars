@@ -1,1 +1,16 @@
-<h1>Hello {{name}}!</h1>
+<div class='container' style=''>
+    {{#each article}}
+    <div class="card m-3" style=''>
+        <img src={{this.media}} class="image card-img-top" alt={{this.link}}>
+        <div class="card-body">
+            <div class="col">
+                <h5 class="card-title"><a href={{this.link}}>{{this.headline}}</a></h5>
+            </div>
+            <div class="col">
+                <i class="like d-inline fa-heart far" style='color: red'> <p class='d-inline text-dark' style='font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial;'>78</p></i>
+                <p class='likes-num d-inline'>78</p>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>

@@ -15,7 +15,7 @@ app.use(express.static("public"));
 
 router.get('/', function(req, res) {
     scrape()
-    .then(data => res.render('./homepage.handlebars', {name: data}))
+    .then(data => res.render('./homepage.handlebars', {article: data}))
 })
 
 router.get('/api', function(req, res) {

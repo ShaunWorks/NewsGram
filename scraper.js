@@ -10,12 +10,11 @@ const scrape = () => {
         console.log("scraping");
         const $ = cheerio.load(res.data);
         const data = [];
-
+        
         $('article').each((i,el) => {
-          const item = $(el).html();
           const headline = $(el).find('.cd__headline-text').text().trim();
           const link = 'https://www.cnn.com' + $(el).find('.media a').attr('href');
-          const media = $(el).find('.media a img').attr('data-src-medium').replace('//', '');
+          const media = $(el).find('.media a img').attr('data-src-medium');
           const article = {
               headline: headline,
               link: link,
